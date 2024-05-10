@@ -1,5 +1,1 @@
-
-
-
-    <i {{ $attributes->merge(['class' => 'fa-regular fa-snowflake text-orange-400 text-xl animate-spin-slow ']) }}></i>
-
+<i {{ $attributes->merge(['class' => 'fa-regular fa-snowflake text-white   text-xl animate-spin-slow ']) }}></i>
