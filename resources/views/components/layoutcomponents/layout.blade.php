@@ -11,8 +11,8 @@
 </head>
 
 <body>
-    <header class="h-[10vh]">
-        <x-navbar />
+    <header class="h-[10vh] w-full  bg-custom-blue">
+        <x-navbarcomponents.navbar />
     </header>
 
 
