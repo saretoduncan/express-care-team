@@ -10,6 +10,9 @@ export default {
             colors: {
                 "custom-blue": "#557a95",
             },
+            fontFamily:{
+                'sans':['Roboto Slab','serif']
+            },
             keyframes: {
                 spin360: {
                     "0%": { transform: "rotate(0deg)" },
@@ -19,6 +22,7 @@ export default {
             animation: {
                 "spin-slow": "spin360 3s linear infinite",
             },
+
         },
     },
     plugins: [],
