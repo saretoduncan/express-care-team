@@ -1,3 +1,3 @@
 <x-layoutcomponents.layout>
-<p>caregivers</p>
+    <p>caregivers</p>
 </x-layoutcomponents.layout>

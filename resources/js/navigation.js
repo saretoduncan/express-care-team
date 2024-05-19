@@ -3,7 +3,7 @@ export const displayColors = () => console.log("navigation js is being logged");
 const menuBar = document.getElementById("menuBar");
 const sidebar = document.getElementById("sideNav");
 let sideOpen = false;
-document.addEventListener("click", (ev) => {
+menuBar.addEventListener("click", (ev) => {
     sideOpen = !sideOpen;
     if (sideOpen) {
         sidebar.classList.remove("translate-y-[-150%]");
