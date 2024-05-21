@@ -48,4 +48,14 @@
             </section>
         </div>
     </section>
+    <section class="bg-white">
+        <section class="my-4">
+            <x-landingPageComponents.titles>What we offer</x-landingPageComponents.titles>
+        </section>
+        <section>
+            <x-landingPageComponents.whatWeOffer />
+        </section>
+
+
+    </section>
 </x-layoutcomponents.layout>
