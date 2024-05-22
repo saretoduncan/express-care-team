@@ -53,10 +53,10 @@ setInterval(function () {
     nextImg();
 }, 5000);
 
-leftAngleButton.addEventListener("click", (ev) => {
-    previousImg()
-});
+// leftAngleButton.addEventListener("click", (ev) => {
+//     previousImg()
+// });
 
-rightAngleButton.addEventListener("click", (ev) => {
-    nextImg();
-});
+// rightAngleButton.addEventListener("click", (ev) => {
+//     nextImg();
+// });
