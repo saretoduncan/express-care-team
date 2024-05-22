@@ -6,7 +6,24 @@ export default {
         "./resources/**/*.vue",
     ],
     theme: {
-        extend: {},
+        extend: {
+            colors: {
+                "custom-blue": "#557a95",
+            },
+            fontFamily:{
+                'sans':['Roboto Slab','serif']
+            },
+            keyframes: {
+                spin360: {
+                    "0%": { transform: "rotate(0deg)" },
+                    "100%": { transform: "rotate(360deg)" },
+                },
+            },
+            animation: {
+                "spin-slow": "spin360 3s linear infinite",
+            },
+
+        },
     },
     plugins: [],
 };

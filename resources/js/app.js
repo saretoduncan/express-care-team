@@ -1,1 +1,4 @@
-import './bootstrap';
+import "./navigation";
+import "./corousel"
+import "./testimonial"
+
