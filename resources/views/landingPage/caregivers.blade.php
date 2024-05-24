@@ -1,4 +1,4 @@
-<x-layoutcomponents.layout>
+<x-layoutcomponents.layout :title="'Caregivers'">
     <div class=" container grid mx-auto p-8 gap-3 md:grid-cols-2 ">
         <section class="space-y-3 self-center">
             <h2 class="text-orange-400 font-bold md:text-lg lg:text-2xl">ARE YOU A COMPETENT CAREGIVER LOOKING FOR A JOB?</h2>

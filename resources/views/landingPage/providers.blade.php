@@ -1,4 +1,4 @@
-<x-layoutcomponents.layout>
+<x-layoutcomponents.layout :title="'Providers'">
     <div class="container grid mx-auto p-8 gap-3 md:grid-cols-2">
         <section class="self-center">
             <img src="{{ asset('images/care5.webp') }}" alt="" class="rounded">

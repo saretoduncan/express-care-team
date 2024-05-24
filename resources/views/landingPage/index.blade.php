@@ -1,4 +1,4 @@
-<x-layoutcomponents.layout>
+<x-layoutcomponents.layout :title="'Home'">
     <section class="mt-2 mx-2 border-4 border-custom-blue rounded-sm relative">
         <x-landingPageComponents.landingCourosel />
     </section>

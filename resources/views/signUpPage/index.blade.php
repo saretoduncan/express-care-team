@@ -1,0 +1,1 @@
+<x-layoutcomponents.layout :title="'Register'"></x-layoutcomponents.layout>
