@@ -1,6 +1,13 @@
+@vite('resources/js/corousel')
 <x-layoutcomponents.layout :title="'Home'">
     <section class="mt-2 mx-2 border-4 border-custom-blue rounded-sm relative">
         <x-landingPageComponents.landingCourosel />
+        <div class="absolute top-0 bottom-0 right-0 left-0 flex justify-between items-center z-10 px-2">
+            <x-landingPageComponents.corouselArrowsBtn id='leftArrowBtn'> <i
+                    class="fa-solid  fa-arrow-left text-white"></i></x-landingPageComponents.jobMatches>
+                <x-landingPageComponents.corouselArrowsBtn id='rightArrowBtn'> <i
+                        class="fa-solid  fa-arrow-right text-white"></i></x-landingPageComponents.jobMatches>
+        </div>
     </section>
     <section class="grid  space-y-5 md:grid-cols-3 justify-center max-w-[500px] mx-auto my-5 ">
 
@@ -11,7 +18,8 @@
     <section class="grid bg-custom-blue w-full py-9 ">
         <div class="grid md:grid-cols-2 px-9">
             <section class="grid place-content-center  place-items-center md:place-items-end">
-                <img src="{{ asset('images/landing-seven.webp') }}" class="w-[340px] lg:w-[60%] rounded-lg" alt="">
+                <img src="{{ asset('images/landing-seven.webp') }}" class="w-[340px] lg:w-[60%] rounded-lg"
+                    alt="">
             </section>
             <section class="md:pl-8 md:self-center">
                 <x-landingPageComponents.chooseUsTitleItem class="text-center md:text-start  text-2xl">Why
