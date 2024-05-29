@@ -1,7 +1,7 @@
 @vite('resources/js/passwordFn.js')
-<div class="relative ">
-    <x-formsComponents.inputs class="w-full" type="password" id="password" name="{{ $pName }}" required />
-    <button class="absolute right-2 " id="passwordEyeBtn"> </i></button>
+<div class="relative passwordParent">
+    <x-formsComponents.inputs class="w-full password" type="password" name="{{ $pName }}" required />
+    <button class="absolute right-2 passwordEyeBtn"> </i></button>
 
 
 </div>

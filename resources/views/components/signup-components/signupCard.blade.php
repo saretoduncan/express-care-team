@@ -8,7 +8,7 @@
         <h3 class="font-bold text-custom-blue text-xl">{{ $title }}</h3>
         {{ $titleCaption }}
         {{-- <p class="text-center text-custom-blue">Are you looking for your dream job? <br> Create a unique career profile with Express Care Team</p> --}}
-        <button class="bg-orange-400 text-white rounded-md px-2 py-1">{{ $buttonContent }}</button>
+        <button class="bg-orange-400 text-white rounded-md px-2 py-1"><a {{ $buttonContent->attributes }}>{{ $buttonContent }}</a></button>
     </section>
 
 </div>
