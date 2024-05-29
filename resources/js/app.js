@@ -1,4 +1,4 @@
 import "./navigation";
-import "./corousel"
-import "./testimonial"
+// import "./corousel"
+// import "./testimonial"
 

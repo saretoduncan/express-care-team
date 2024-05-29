@@ -19,18 +19,13 @@ let currentSlideIndex = 0;
 createIndicatorsFromSlides();
 //get track
 const trackIndicatorChildren = Array.from(parentTrackIndicator.children);
+//update current slide method
 const updateCorousel = (i) => {
     testimonialSlides.forEach((item, ind) => {
         if (i === ind) {
             item.classList.remove("scale-0");
-            
-            
         } else {
-           
             item.classList.add("scale-0");
-           
-        
-
         }
     });
     trackIndicatorChildren.forEach((item, index) => {
@@ -43,13 +38,7 @@ const updateCorousel = (i) => {
         }
     });
 };
-const prevSlide = () => {
-    currentSlideIndex =
-        currentSlideIndex === 0
-            ? testimonialSlides.length - 1
-            : currentSlideIndex - 1;
-    updateCorousel(currentSlideIndex);
-};
+//next slide method
 const nextSlide = () => {
     currentSlideIndex =
         currentSlideIndex === testimonialSlides.length - 1
@@ -59,6 +48,7 @@ const nextSlide = () => {
 };
 updateCorousel(currentSlideIndex);
 let corouselTimer;
+//start time interval method
 const startCorouselTimer = () => {
     corouselTimer = setInterval(() => {
         nextSlide();
@@ -70,14 +60,15 @@ startCorouselTimer();
 const cancelTimer = () => {
     clearInterval(corouselTimer);
 };
-
+//after click method
 const trackIndicatorOnClick = (selectedIndex) => {
     cancelTimer();
     updateCorousel(selectedIndex);
-    startCorouselTimer()   
+    startCorouselTimer();
 };
+//add click event listener on track indicators
 trackIndicatorChildren.forEach((button, index) =>
-    button.addEventListener("click", () =>{
-        trackIndicatorOnClick(index)
+    button.addEventListener("click", () => {
+        trackIndicatorOnClick(index);
     })
 );
