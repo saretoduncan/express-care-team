@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('user_provider', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id')->unique();
             $table->date('home_name');
             $table->string("website")->nullable();
             $table->string("work_email");
@@ -23,6 +24,7 @@ return new class extends Migration
             $table->string("street");
             $table->string("home_description", "1000");
             $table->timestamps();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 
