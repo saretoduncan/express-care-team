@@ -19,9 +19,13 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
+        'first_name',
+        'last_name',
+        'terms_accepted',
         'email',
         'password',
+
+
     ];
 
     /**
@@ -44,12 +48,13 @@ class User extends Authenticatable
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
+            'terms_accepted' => 'boolean'
         ];
     }
     //roles relationship
     public function roles(): BelongsToMany
     {
-        return $this->belongsToMany(UserRoles::class, 'role');
+        return $this->belongsToMany(UserRoles::class, 'users_roles', 'user_id','role_id');
     }
     //caregiver relationship
     public function caregiver(): HasOne

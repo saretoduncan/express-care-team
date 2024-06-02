@@ -12,4 +12,6 @@ Route::get('/login', [LoginController::class, 'index'])->name('login.index');
 Route::post('/login', [LoginController::class, 'login'])->name('login');
 Route::get('/register', [SignupController::class, 'index'])->name('signup.index');
 Route::get('/register/caregiver', [SignupController::class, 'caregiver'])->name('signup.caregiver');
+Route::post('register/caregiver', [SignupController::class, 'storeCaregiver'])->name('store.caregiver');
 Route::get('/register/provider', [SignupController::class, 'provider'])->name('signup.provider');
+Route::post('/register/provider', [SignupController::class, 'storeProvider'])->name('store.provider');
