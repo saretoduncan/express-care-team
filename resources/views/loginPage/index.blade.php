@@ -2,7 +2,7 @@
 
     <form action="{{ route('login') }}" method="POST"
         class="mt-10 mb-5 w-[90%] md:w-[500px] mx-auto  border-orange-400 border-2 shadow-lg shadow-orange-400 rounded-md p-8 ">
-        @csrf()
+        @csrf
         @method('POST')
         <section class="grid  place-content-center">
             <img src="{{ asset('images/logo.png') }}" alt="" class="w-[250px]">
@@ -11,8 +11,7 @@
         <section>
             <div class="flex flex-col ">
                 <x-formsComponents.labels class="text-sm" for="email">Email</x-formsComponents.labels>
-                <x-formsComponents.inputs  type="email" name='email'
-                  :moreClass="$errors->has('email')?'border-red-500':''"  value="{{old('email')}}" />
+                <x-formsComponents.inputs type="email" name='email' :moreClass="$errors->has('email') ? 'border-red-500' : ''" value="{{ old('email') }}" />
                 @error('email')
                     <small class="text-red-500">{{ $message }}</small>
                 @enderror

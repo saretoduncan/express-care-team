@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\CaregiversControllers;
 use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\ProvidersControllers;
 use App\Http\Controllers\SignupController;
 use Illuminate\Support\Facades\Route;
 
@@ -15,3 +17,6 @@ Route::get('/register/caregiver', [SignupController::class, 'caregiver'])->name(
 Route::post('register/caregiver', [SignupController::class, 'storeCaregiver'])->name('store.caregiver');
 Route::get('/register/provider', [SignupController::class, 'provider'])->name('signup.provider');
 Route::post('/register/provider', [SignupController::class, 'storeProvider'])->name('store.provider');
+Route::post('/register/provider/info', [SignupController::class, 'storeProviderHomeInfo'])->name('store.provider.homeInfo');
+Route::get("/provider/index", [ProvidersControllers::class, 'index'])->name('provider.index');
+Route::get('/caregiver/index', [CaregiversControllers::class, 'index'])->name('caregiver.index');
