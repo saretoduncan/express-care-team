@@ -5,6 +5,9 @@ use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProvidersControllers;
 use App\Http\Controllers\SignupController;
+use App\Http\Middleware\AuthMiddleware;
+use App\Http\Middleware\CaregiverMiddleware;
+use App\Http\Middleware\ProviderMiddleware;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [LandingPageController::class, 'index'])->name('landingPage.index');
@@ -18,5 +21,12 @@ Route::post('register/caregiver', [SignupController::class, 'storeCaregiver'])->
 Route::get('/register/provider', [SignupController::class, 'provider'])->name('signup.provider');
 Route::post('/register/provider', [SignupController::class, 'storeProvider'])->name('store.provider');
 Route::post('/register/provider/info', [SignupController::class, 'storeProviderHomeInfo'])->name('store.provider.homeInfo');
-Route::get("/provider/index", [ProvidersControllers::class, 'index'])->name('provider.index');
-Route::get('/caregiver/index', [CaregiversControllers::class, 'index'])->name('caregiver.index');
+
+//providers routes
+Route::middleware([AuthMiddleware::class, ProviderMiddleware::class])->group(function () {
+    Route::get("/provider/index", [ProvidersControllers::class, 'index'])->name('provider.index');
+});
+//caregivers routes
+Route::middleware([AuthMiddleware::class, CaregiverMiddleware::class])->group(function () {
+    Route::get('/caregiver/index', [CaregiversControllers::class, 'index'])->name('caregiver.index');
+});

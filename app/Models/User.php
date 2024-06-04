@@ -54,13 +54,18 @@ class User extends Authenticatable
     //roles relationship
     public function roles(): BelongsToMany
     {
-        return $this->belongsToMany(UserRoles::class, 'users_roles', 'user_id','role_id');
+        return $this->belongsToMany(UserRoles::class, 'users_roles', 'user_id', 'role_id');
+    }
+    public function hasRole(string $role)
+    {
+        return $this->roles()->where('role', $role)->first();
     }
     //caregiver relationship
     public function caregiver(): HasOne
     {
         return $this->hasOne(UserCaregiver::class);
     }
+
     //provider relationship
     public function provider(): HasOne
     {
