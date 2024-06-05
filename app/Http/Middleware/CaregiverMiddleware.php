@@ -21,6 +21,7 @@ class CaregiverMiddleware
         if ($user && User::find($user->id)->hasRole("CAREGIVER")) {
             return $next($request);
         }
+
         return abort(403, "Unauthorized: Access restricted to caregivers");
     }
 }

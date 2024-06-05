@@ -34,4 +34,11 @@ class LoginController extends Controller
             return back()->withInput()->onlyInput('email');
         }
     }
+    public function logout(Request $req)
+    {
+        Auth::logout();
+        $req->session()->invalidate();
+        $req->session()->regenerateToken();
+        return redirect(route('landingPage.index'));
+    }
 }

@@ -19,8 +19,10 @@ class ProviderMiddleware
     {
         $user = Auth::user();
         if ($user && User::find($user->id)->hasRole("PROVIDER")) {
+
             return $next($request);
         }
+
         return abort(403, "Unauthorized: Access restricted to providers");
     }
 }

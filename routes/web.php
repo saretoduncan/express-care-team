@@ -24,7 +24,9 @@ Route::post('/register/provider/info', [SignupController::class, 'storeProviderH
 
 //providers routes
 Route::middleware([AuthMiddleware::class, ProviderMiddleware::class])->group(function () {
-    Route::get("/provider/index", [ProvidersControllers::class, 'index'])->name('provider.index');
+    Route::get("/account/provider/dashboard", [ProvidersControllers::class, 'index'])->name('provider.index');
+    Route::get('/account/provider/alljobs', [ProvidersControllers::class, 'alljobs'])->name('provider.alljobs');
+    Route::get('/account/provider/profile',[ProvidersControllers::class,'profile'])->name('provider.profile');
 });
 //caregivers routes
 Route::middleware([AuthMiddleware::class, CaregiverMiddleware::class])->group(function () {
