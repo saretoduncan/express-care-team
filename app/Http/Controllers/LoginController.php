@@ -13,7 +13,7 @@ class LoginController extends Controller
     {
         return view('loginPage.index');
     }
-
+    //login
     public function login(Request $req)
     {
         //validate form input
@@ -21,8 +21,7 @@ class LoginController extends Controller
         if (Auth::attempt(['email' => $res['email'], 'password' => $req['password']])) {
             $req->session()->regenerate();
             $user = User::where('email', $req['email'])->first();
-            flash()->option('position', 'top-center')->option('timeout', '')->success("login 
-            success");
+            flashSuccess("Login successfully");
 
             if ($user->roles[0]['role'] === 'PROVIDER') {
                 return redirect()->intended(route('provider.index'));
@@ -34,6 +33,8 @@ class LoginController extends Controller
             return back()->withInput()->onlyInput('email');
         }
     }
+
+    //logout 
     public function logout(Request $req)
     {
         Auth::logout();

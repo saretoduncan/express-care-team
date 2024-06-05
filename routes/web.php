@@ -8,6 +8,7 @@ use App\Http\Controllers\SignupController;
 use App\Http\Middleware\AuthMiddleware;
 use App\Http\Middleware\CaregiverMiddleware;
 use App\Http\Middleware\ProviderMiddleware;
+use App\Http\Middleware\RevalidateBackHistory;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [LandingPageController::class, 'index'])->name('landingPage.index');
@@ -22,13 +23,19 @@ Route::get('/register/provider', [SignupController::class, 'provider'])->name('s
 Route::post('/register/provider', [SignupController::class, 'storeProvider'])->name('store.provider');
 Route::post('/register/provider/info', [SignupController::class, 'storeProviderHomeInfo'])->name('store.provider.homeInfo');
 
+
 //providers routes
 Route::middleware([AuthMiddleware::class, ProviderMiddleware::class])->group(function () {
     Route::get("/account/provider/dashboard", [ProvidersControllers::class, 'index'])->name('provider.index');
     Route::get('/account/provider/alljobs', [ProvidersControllers::class, 'alljobs'])->name('provider.alljobs');
-    Route::get('/account/provider/profile',[ProvidersControllers::class,'profile'])->name('provider.profile');
+    Route::get('/account/provider/profile', [ProvidersControllers::class, 'profile'])->name('provider.profile');
 });
 //caregivers routes
 Route::middleware([AuthMiddleware::class, CaregiverMiddleware::class])->group(function () {
     Route::get('/caregiver/index', [CaregiversControllers::class, 'index'])->name('caregiver.index');
+});
+
+//logout
+Route::middleware([AuthMiddleware::class, RevalidateBackHistory::class])->group(function () {
+    Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 });
