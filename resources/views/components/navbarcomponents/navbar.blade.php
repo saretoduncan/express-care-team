@@ -1,10 +1,10 @@
 @props(['user'])
-<nav {{ $attributes->merge(['class' => 'relative container  mx-auto h-full grid grid-cols-2 lg:grid-cols-3']) }}>
+<nav {{ $attributes->merge(['class' => 'relative container  mx-auto h-full grid grid-cols-2 lg:grid-cols-4 ']) }}>
 
     <section class="self-center ms-2  lg:justify-self-start lg:ms-2">
         <img src="{{ asset('images/logo.png') }}" alt=" app logo" class="w-[150px]">
     </section>
-    <section class="hidden lg:flex lg:self-center lg:space-x-2 justify-self-center ">
+    <section class="hidden lg:flex lg:self-center lg:space-x-2 justify-self-center lg:col-span-2 ">
         <div class="hidden lg:self-center lg:block">
             <x-navbarcomponents.snowflakes class="  lg:self-center" />
         </div>
@@ -16,6 +16,10 @@
         @if (isset($user) && $user->roles->contains('role', 'PROVIDER'))
             <x-navbarcomponents.providerNavlinks class="lg:flex lg:space-x-4" />
         @endif
+        @if (isset($user) && $user->roles->contains('role', 'CAREGIVER'))
+            <x-navbarcomponents.caregiverNavlinks class="lg:flex lg:space-x-4" />
+        @endif
+       
 
         <div class="hidden lg:self-center lg:block">
             <x-navbarcomponents.snowflakes class="self-center" />

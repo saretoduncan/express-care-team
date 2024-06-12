@@ -1,0 +1,1 @@
+<x-layoutcomponents.layout :title="'My Jobs'" :users="$user"></x-layoutcomponents.layout>

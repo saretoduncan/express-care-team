@@ -1,1 +1,1 @@
-<x-layoutcomponents.layout :title="'caregiver index'"></x-layoutcomponents.layout>
+<x-layoutcomponents.layout :title="'dashboard'" :users="$user"></x-layoutcomponents.layout>

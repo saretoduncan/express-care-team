@@ -24,18 +24,22 @@ Route::post('/register/provider', [SignupController::class, 'storeProvider'])->n
 Route::post('/register/provider/info', [SignupController::class, 'storeProviderHomeInfo'])->name('store.provider.homeInfo');
 
 
-//providers routes
-Route::middleware([AuthMiddleware::class, ProviderMiddleware::class])->group(function () {
-    Route::get("/account/provider/dashboard", [ProvidersControllers::class, 'index'])->name('provider.index');
-    Route::get('/account/provider/alljobs', [ProvidersControllers::class, 'alljobs'])->name('provider.alljobs');
-    Route::get('/account/provider/profile', [ProvidersControllers::class, 'profile'])->name('provider.profile');
-});
-//caregivers routes
-Route::middleware([AuthMiddleware::class, CaregiverMiddleware::class])->group(function () {
-    Route::get('/caregiver/index', [CaregiversControllers::class, 'index'])->name('caregiver.index');
-});
 
-//logout
-Route::middleware([AuthMiddleware::class, RevalidateBackHistory::class])->group(function () {
+
+
+Route::middleware([AuthMiddleware::class])->group(function () {
+    //caregivers routes
+    Route::middleware([CaregiverMiddleware::class])->group(function () {
+        Route::get('account/caregiver/dasboard', [CaregiversControllers::class, 'index'])->name('caregiver.index');
+        Route::get('account/caregiver/myjobs', [CaregiversControllers::class, 'myJobs'])->name('caregiver.myjobs');
+        Route::get('account/caregiver/savedjobs', [CaregiversControllers::class, 'savedJobs'])->name('caregiver.savedjobs');
+    });
+    //providers routes
+    Route::middleware([ProviderMiddleware::class])->group(function () {
+        Route::get("/account/provider/dashboard", [ProvidersControllers::class, 'index'])->name('provider.index');
+        Route::get('/account/provider/alljobs', [ProvidersControllers::class, 'alljobs'])->name('provider.alljobs');
+        Route::get('/account/provider/profile', [ProvidersControllers::class, 'profile'])->name('provider.profile');
+    });
+    //logout route
     Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 });

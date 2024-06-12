@@ -6,10 +6,10 @@
         <div>
             <x-navbarcomponents.providerNavlinks />
             <div class="text-white font-bold text-lg mt-1 space-y-2">
-                <div class="border-b-2 py-1 ">
+                <div class="border-b-2 border-gray-300 py-1 ">
                     <x-navbarcomponents.profile-navlink />
                 </div>
-                <div class="border-b-2 py-1">
+                <div class="border-b-2 py-1 border-gray-300">
                     <x-navbarcomponents.logout-navlink />
                 </div>
             </div>
