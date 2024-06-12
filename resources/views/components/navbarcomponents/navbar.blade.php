@@ -19,7 +19,7 @@
         @if (isset($user) && $user->roles->contains('role', 'CAREGIVER'))
             <x-navbarcomponents.caregiverNavlinks class="lg:flex lg:space-x-4" />
         @endif
-       
+
 
         <div class="hidden lg:self-center lg:block">
             <x-navbarcomponents.snowflakes class="self-center" />
@@ -33,24 +33,31 @@
                 <x-navbarcomponents.signup-link />
             </div>
         @endguest
+
         @auth
-            <div>
-                <button id="profileBtn" class="rounded-[50%] border border-white py-1 px-2"> <i
-                        class="fa-solid fa-user text-xl text-white"></i></button>
-            </div>
-            <div class="absolute top-[170%] bg-white z-[25]  right-0   overflow-hidden max-h-0 transform ease-in-out  duration-300 "
-                id="profileDropDown">
-                <div class="w-[200px] border-2 shadow-md p-2 rounded space-y-2">
-                    <div class="flex justify-between transform duration-100 hover:text-lg ease-in-out font-bold">
-                        <x-navbarcomponents.profile-navlink />
-                        <i class="fa-solid fa-angle-right self-center"></i>
-                    </div>
-                    <div class="flex justify-between transform duration-100 hover:text-lg ease-in-out font-bold">
-                        <x-navbarcomponents.logout-navlink />
-                        <i class="fa-solid fa-angle-right self-center"></i>
+            <section class="flex space-x-4">
+                @if (isset($user) && $user->roles->contains('role', 'PROVIDER'))
+                    <a href="" class="text-white self-center bg-orange-400 p-2 rounded-md font-bold">Post a job</a>
+                @endif
+                <div>
+                    <button id="profileBtn" class="rounded-[50%] border border-white py-1 px-2"> <i
+                            class="fa-solid fa-user text-xl text-white"></i></button>
+                </div>
+                <div class="absolute top-[170%] bg-white z-[25]  right-0   overflow-hidden max-h-0 transform ease-in-out  duration-300 "
+                    id="profileDropDown">
+                    <div class="w-[200px] border-2 shadow-md p-2 rounded space-y-2">
+                        <div class="flex justify-between transform duration-100 hover:text-lg ease-in-out font-bold">
+                            <x-navbarcomponents.profile-navlink />
+                            <i class="fa-solid fa-angle-right self-center"></i>
+                        </div>
+                        <div class="flex justify-between transform duration-100 hover:text-lg ease-in-out font-bold">
+                            <x-navbarcomponents.logout-navlink />
+                            <i class="fa-solid fa-angle-right self-center"></i>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </section>
+
         @endauth
 
     </section>

@@ -1,4 +1,4 @@
-@props(['users'=>null, 'title'])
+@props(['users' => null, 'title'])
 <!DOCTYPE html>
 <html lang="en">
 
@@ -21,7 +21,7 @@
         <x-navbarcomponents.navbar class="bg-custom-blue z-20" :user="$users" />
         <div class="relative lg:hidden h-[90vh] bg-custom-blue transition-all duration-500 ease-in-out translate-y-[-150%] z-[12] "
             id="sideNav">
-            <x-navbarcomponents.sidebar class="absolute left-0 right-0 top-0 bottom-0 px-3 " />
+            <x-navbarcomponents.sidebar class="absolute left-0 right-0 top-0 bottom-0 px-3 " :user="$users" />
         </div>
 
     </header>
