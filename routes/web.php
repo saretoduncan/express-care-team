@@ -4,6 +4,7 @@ use App\Http\Controllers\CaregiversControllers;
 use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProvidersControllers;
+use App\Http\Controllers\ProvidersJobController;
 use App\Http\Controllers\SignupController;
 use App\Http\Middleware\AuthMiddleware;
 use App\Http\Middleware\CaregiverMiddleware;
@@ -27,6 +28,8 @@ Route::post('/register/provider/info', [SignupController::class, 'storeProviderH
 
 
 
+
+
 Route::middleware([AuthMiddleware::class])->group(function () {
     //caregivers routes
     Route::middleware([CaregiverMiddleware::class])->group(function () {
@@ -39,6 +42,8 @@ Route::middleware([AuthMiddleware::class])->group(function () {
         Route::get("/account/provider/dashboard", [ProvidersControllers::class, 'index'])->name('provider.index');
         Route::get('/account/provider/alljobs', [ProvidersControllers::class, 'alljobs'])->name('provider.alljobs');
         Route::get('/account/provider/profile', [ProvidersControllers::class, 'profile'])->name('provider.profile');
+        Route::get('/account/provider/job/create', [ProvidersJobController::class, 'createJob'])->name('provider.createjob');
+        Route::post('/account/provider/job/create', [ProvidersJobController::class, 'storeJob'])->name('provider.store.job');
     });
     //logout route
     Route::post('/logout', [LoginController::class, 'logout'])->name('logout');

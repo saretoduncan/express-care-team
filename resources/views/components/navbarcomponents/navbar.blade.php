@@ -37,7 +37,7 @@
         @auth
             <section class="flex space-x-4">
                 @if (isset($user) && $user->roles->contains('role', 'PROVIDER'))
-                    <a href="" class="text-white self-center bg-orange-400 p-2 rounded-md font-bold">Post a job</a>
+                  <x-postJobLink/>
                 @endif
                 <div>
                     <button id="profileBtn" class="rounded-[50%] border border-white py-1 px-2"> <i
