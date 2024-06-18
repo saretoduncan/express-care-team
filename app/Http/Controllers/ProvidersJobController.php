@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ProvidersJobsModel;
 use App\Models\User;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -36,6 +38,34 @@ class ProvidersJobController extends Controller
             'certificates_needed' => ['required', 'array'],
             'certificates_needed.*' => ['required']
         ]);
-        dd($validated);
+        $user_provider = User::find(Auth::user()->id)->load('roles');
+        if (!isset($user_provider)) {
+            flashError("Please login first");
+            return back()->withInput();
+        }
+
+        if (!$user_provider->roles->contains('role', 'PROVIDER')) {
+            flashError("This function is reserved only for providers only");
+            return back()->withInput();
+        }
+
+        $savedData = ProvidersJobsModel::create([
+            'work_type' => $validated['work_type'],
+            'start_date' => $validated['start_date'],
+            'end_date' => $validated['end_date'],
+            'shift_start' => $validated['shift_start'],
+            'shift_end' => $validated['shift_end'],
+            'people_needed' => $validated['people_needed'],
+            'rate_per_hour' => $validated['rate_per_hour'],
+            'payment_period' => $validated['payment_period'],
+            'certificates_needed' => serialize($validated['certificates_needed']),
+            'role' => $validated['role'],
+            'user_id' => Auth::user()->id,
+
+
+        ]);
+        flashSuccess("Job posted successfully");
+        return redirect(route('provider.index'));
     }
+    
 }

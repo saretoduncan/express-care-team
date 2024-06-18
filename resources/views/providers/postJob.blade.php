@@ -1,3 +1,5 @@
+@vite('resources/js/postJob.js')
+
 <x-layoutcomponents.layout :title="'Post Job'" :users="$user">
     <section class="my-3 text-center space-y-2">
         <h3 class="text-center font-bold text-xl">Post Job</h3>
@@ -108,13 +110,13 @@
             <div class="w-full flex flex-col" id="requiredCerts">
                 <x-formsComponents.labels for="">Required Certification</x-formsComponents.labels>
                 <div class="flex flex-wrap" id="certHolder">
-                    <div class=" flex flex-wrap ">
-                        <div class="px-2 py-1 text-white bg-orange-400  rounded-md flex me-1">
+                    <div class=" flex flex-wrap  " id="innerCertHolder">
+                        {{-- <div class="px-2 py-1 text-white bg-orange-400  rounded-md flex me-1">
                             <p class="text-sm">HCA</p>
                             <div class="text-sm flex cursor-pointer items-center bg-orange-600 px-1 rounded-full ms-1">
                                 <i class="fa-solid fa-close delete"></i>
                             </div>
-                        </div>
+                        </div> --}}
 
                     </div>
                     <div>
@@ -125,12 +127,12 @@
 
             </div>
 
-            <div class="my-2">
-                <input type="submit" value="Post"
-                    class="text-white bg-orange-400 px-3 text-lg  py-1 rounded-md  font-bold w-full" />
-            </div>
+
         </form>
+        <div class="my-2">
+            <button id="submitForm"
+                class="text-white bg-orange-400 px-3 text-lg  py-1 rounded-md  font-bold w-full">Post</button>
+        </div>
     </section>
 
 </x-layoutcomponents.layout>
-@vite('resources/js/postJob.js')

@@ -40,7 +40,7 @@ Route::middleware([AuthMiddleware::class])->group(function () {
     //providers routes
     Route::middleware([ProviderMiddleware::class])->group(function () {
         Route::get("/account/provider/dashboard", [ProvidersControllers::class, 'index'])->name('provider.index');
-        Route::get('/account/provider/alljobs', [ProvidersControllers::class, 'alljobs'])->name('provider.alljobs');
+        Route::get('/account/provider/alljobs', [ProvidersControllers::class, 'allProvidersjobs'])->name('provider.alljobs');
         Route::get('/account/provider/profile', [ProvidersControllers::class, 'profile'])->name('provider.profile');
         Route::get('/account/provider/job/create', [ProvidersJobController::class, 'createJob'])->name('provider.createjob');
         Route::post('/account/provider/job/create', [ProvidersJobController::class, 'storeJob'])->name('provider.store.job');

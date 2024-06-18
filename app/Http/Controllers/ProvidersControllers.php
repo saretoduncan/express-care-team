@@ -11,7 +11,7 @@ class ProvidersControllers extends Controller
     protected function getCurrentUser()
     {
         $user = Auth::getUser();
-        $retrievedUser = User::find($user->id)->load('roles')->load('provider');
+        $retrievedUser = User::find($user->id)->load('roles')->load('provider')->load('providersJob');
         return $retrievedUser;
     }
     //
@@ -22,9 +22,10 @@ class ProvidersControllers extends Controller
 
         return view('providers.index', ['user' => $user]);
     }
-    public function allJobs()
+    public function allProvidersJobs()
     {
         $user = $this->getCurrentUser();
+
         return view('providers.manageJobs', ['user' => $user]);
     }
     public function createJob()
@@ -32,5 +33,4 @@ class ProvidersControllers extends Controller
         $user = $this->getCurrentUser();
         return view('providers.postJob', ['user' => $user]);
     }
-    
 }
